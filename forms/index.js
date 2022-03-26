@@ -30,14 +30,29 @@ const bootstrapField = function (name, object) {
 };
 
 const createProductForm = function () {
+
     return forms.create({
         "name": fields.string({
-        'required': true,
-        'errorAfterField': true,
+            'required': true,
+            'errorAfterField': true,
+        }),
+
+        "cost": fields.string({
+            'required': true,
+            'errorAfterField': true,
+            'validators': [validators.integer(), validators.min(0)]
+        }),
+
+        "description" : fields.string ({
+            'required': true,
+            'errorAfterField': true
         })
+
+
     })
 }
 
 module.exports = {
-    bootstrapField, createProductForm
+    bootstrapField,
+    createProductForm
 };
